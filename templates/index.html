@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>CPU Scheduler</title>
+        <meta name="description" content="">
+        
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="static/css/fontAwesome.css">
+        
+        <!-- Other CSS styles -->
+        <link rel="stylesheet" href="static/css/hero-slider.css">
+        <link rel="stylesheet" href="static/css/owl-carousel.css">
+        <link rel="stylesheet" href="static/css/templatemo-style.css">
+        <link rel="stylesheet" href="static/css/lightbox.css">
+        <link rel="stylesheet" href="static/css/styles.css">
+        
+        <!-- Modernizr -->
+        <script src="static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        
+        <!-- Bootstrap JS -->
+        <script src="static/js/bootstrap.min.js"></script>
+    </head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 href="#" class="navbar-brand scroll-top"><em>CPU</em> Scheduler</h1>
+                </div>
+                <!--/.navbar-header-->
+                <div id="main-nav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" class="scroll-top">Home</a></li>
+                        <li><a href="#about" class="scroll-link" data-id="about">Start your test</a></li>
+                    </ul>
+                </div>
+                <!--/.navbar-collapse-->
+            </nav>
+            <!--/.navbar-->
+        </div>
+        <!--/.container-->
+    </div>
+
+
+    <div class="parallax-content baner-content" id="home">
+        <div class="container">
+            <div class="text-content">
+                <h2>Effortless <em>CPU</em> Scheduling Calculator</h2>
+                <p style="font-size: large;">Explore CPU scheduling algorithms! Calculate average waiting, response, and turnaround times effortlessly for optimized performance and efficiency.</p>
+                <div class="primary-white-button">
+                    <a href="#" class="scroll-link" data-id="about">Let's Start</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="page-section">
+        <div class="container">
+            <div class="row">
+    
+                <!-- Combined Form Section -->
+                <form action="/result" method="post" enctype="multipart/form-data" class="col-md-12 mx-auto">
+                    <!-- File Upload Section -->
+                    <div class="col-md-6 col-xs-12">
+                        <div class="service-item">
+                            <div class="icon">
+                                <img src="static\img\service_icon_01.png" alt="">
+                            </div>
+                            <h4>Upload Your Processes</h4>
+                            <div class="line-dec"></div>
+                            <p>Enhance your process management! Upload a CSV file to effortlessly calculate and analyze details with our CPU scheduling algorithms.</p>
+                            <input class="form-control form-control-lg service-input" type="file" name="file">
+                        </div>
+                    </div>
+    
+                    <!-- Radio Buttons Section -->
+                    <div class="col-md-6 col-xs-12">
+                        <div class="service-item">
+                            <div class="icon">
+                                <img src="static\img\service_icon_01.png" alt="">
+                            </div>
+                            <h4>Select Scheduling Algorithm</h4>
+                            <div class="line-dec"></div>
+                            <p>Choose a scheduling algorithm to perform calculations on the uploaded processes.</p>
+    
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="FCFS" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            FirstComeFirstServe
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="NonPreemptiveSFJ">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            NonPreemptiveSFJ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="PreemptiveSFJ">
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                            PreemptiveSFJ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="NonPreemptivePriority">
+                                        <label class="form-check-label" for="flexRadioDefault4">
+                                            NonPreemptivePriority
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="PreemptivePriority">
+                                        <label class="form-check-label" for="flexRadioDefault5">
+                                            PreemptivePriority
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" value="RR">
+                                        <label class="form-check-label" for="flexRadioDefault6">
+                                            Round Robin
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <div class="primary-white-button text-center">
+                        <button class="btn btn-lg submit_button" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-md-4 col-sm-12">
+                    <div class="logo">
+                        <a class="logo-ft scroll-top" href="#"><em>T</em>inker</a>
+                        <p>Copyright &copy; 2020 Your Company 
+                       <br>Design: TemplateMo</p>
+                    </div>
+                </div> -->
+                Tehran Province, Tehran, District 6, Jalal-e-Al-e-Ahmad Hwy, P9FP+XM3, Iran
+                <div class="col-md-4 col-sm-12">
+                    <div class="location">
+                        <h4>Location</h4>
+                        <ul>
+                            <li>Tehran, <br>District 6, <br>Jalal-e-Al-e-Ahmad Hwy, <br>Iran</li>
+                            <li>University of Tehran, <br>College of Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <div class="contact-info">
+                        <h4>More Info</h4>
+                        <ul>
+                            <li><em>Phone</em>: 02161114334</li>
+                            <li><em>Email</em>: --</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-12">
+                    <div class="connect-us">
+                        <h4>Get Social with us</h4>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+
+        function test() {
+            document.querySelector('.submit_button').textContent = 'Loading';
+        }
+    $(document).ready(function() {
+
+        // navigation click actions 
+        $('.scroll-link').on('click', function(event){
+            event.preventDefault();
+            var sectionID = $(this).attr("data-id");
+            scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+            event.preventDefault();
+            $('#main-nav').toggleClass("open");
+        });
+
+        $('.submit_button').on('click', function () {
+            $('#radioModal').modal('show');
+        });
+    });
+    // scroll function
+    function scrollToID(id, speed){
+        var offSet = 50;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+            mainNav.removeClass("open");
+        }
+    }
+    if (typeof console === "undefined") {
+        console = {
+            log: function() { }
+        };
+    }
+    </script>
+</body>
+</html>

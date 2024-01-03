@@ -1,0 +1,6 @@
+from algorithms.fcfs import FCFS
+from algorithms.non_preemptive_sfj import NonPreemptiveSFJ
+from algorithms.preemptive_sfj import PreemptiveSFJ
+from algorithms.non_preemptive_priority import NonPreemptivePriority
+from algorithms.preemptive_priority import PreemptivePriority
+from algorithms.rr import RR

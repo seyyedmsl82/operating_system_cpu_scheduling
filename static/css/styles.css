@@ -82,3 +82,47 @@
     font-size: 18px;
     margin-top: 8px;
 }
+
+.timeline-container {
+    position: relative;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    height: 50px;
+    overflow: hidden;
+}
+
+.timeline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.timeline-item {
+    position: absolute;
+    height: 100%;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.timeline-labels {
+    display: flex;
+    justify-content: space-between;
+    color: black !important; 
+    margin-top: 10px;
+}
+
+.timeline-label {
+    text-align: center;
+}

@@ -123,6 +123,31 @@
                             </div>
                         </div>
 
+                        <h2>Timeline Queue</h2>
+                        <div class="timeline-container">
+                            <div class="timeline">
+                                {% set colors = ['#ff5733', '#33ff57', '#5733ff', '#ff33c5', '#33c5ff', '#c5ff33', '#e433ff', '#33ffe4', '#ffe433', '#33ff82'] %}
+                                {% for process in timeline_queue %}
+                                    {% set i = loop.index - 1 %}
+                                    {% set start_time_int = process.start_time | int %}
+                                    {% set end_time_int = process.end_time | int %}
+                                    <div class="timeline-item" style="left: {{ start_time_int }}px; width: {{ end_time_int - start_time_int }}px; background-color: {{ colors[i % colors|length] }};">
+                                        <span>{{ process.pid }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            
+                        </div>
+                        <div class="timeline-labels">
+                            {% for process in timeline_queue %}
+                                <div class="timeline-label" style="color: black;">
+                                    <p>Process {{ process.pid }}</p>
+                                    <p>Start Time: {{ process.start_time }}</p>
+                                    <p>End Time: {{ process.end_time }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+
                     </div>
                 </div>
     
@@ -137,41 +162,12 @@
     <footer>
         <div class="container">
             <div class="row">
-                <!-- <div class="col-md-4 col-sm-12">
-                    <div class="logo">
-                        <a class="logo-ft scroll-top" href="#"><em>T</em>inker</a>
-                        <p>Copyright &copy; 2020 Your Company 
-                       <br>Design: TemplateMo</p>
-                    </div>
-                </div> -->
-                Tehran Province, Tehran, District 6, Jalal-e-Al-e-Ahmad Hwy, P9FP+XM3, Iran
                 <div class="col-md-4 col-sm-12">
                     <div class="location">
-                        <h4>Location</h4>
+                        <h4>Seyyed Reza Moslemi, Nima Miri</h4>
                         <ul>
-                            <li>Tehran, <br>District 6, <br>Jalal-e-Al-e-Ahmad Hwy, <br>Iran</li>
+                            <li>ID: 220700046, 220700051</li>
                             <li>University of Tehran, <br>College of Engineering</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                    <div class="contact-info">
-                        <h4>More Info</h4>
-                        <ul>
-                            <li><em>Phone</em>: 02161114334</li>
-                            <li><em>Email</em>: --</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                    <div class="connect-us">
-                        <h4>Get Social with us</h4>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -184,6 +180,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+
+    <script>
+        // Add this JavaScript code to generate random colors for each process
+        function generate_random_color() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
@@ -232,6 +240,7 @@
             log: function() { }
         };
     }
+    
     </script>
 </body>
 </html>

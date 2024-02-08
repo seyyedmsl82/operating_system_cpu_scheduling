@@ -5,7 +5,7 @@ This algorithm sorts processes by the lowest burst time to the highest.
 
 """
 
-class NonPreemptiveSFJ(object):
+class NonPreemptiveSJF(object):
 
     def __init__(self, processes):
 
@@ -58,6 +58,7 @@ class NonPreemptiveSFJ(object):
                 self.running_process.waiting_time = self.running_process.start_time - self.running_process.arrival_time
                 self.running_process.response_time = self.running_process.start_time - self.running_process.arrival_time
                 self.executed_processes.append(self.running_process)
+                self.timeline_queue.append({'pid': self.running_process.pid, 'start_time': self.running_process.start_time, 'end_time': self.running_process.end_time})
                 self.running_process = None
 
                 # All processes have done
@@ -104,8 +105,6 @@ class NonPreemptiveSFJ(object):
 
             self.timeline = next_important_time
 
-            if self.running_process:
-                self.timeline_queue.append({'pid': self.running_process.pid, 'start_time': self.running_process.arrival_time, 'end_time': self.timeline})
 
 
         return {

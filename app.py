@@ -33,12 +33,13 @@ def process_form():
         average_waiting_time = algo_details["Average waiting time"]
         average_turnaround_time = algo_details["Average turnaround time"]
         average_response_time = algo_details["Average response time"]
+        timeline_queue = algo_details["Timeline Queue"]
         
 
         return render_template('result.html', algorithm = algorithm, total_processes = total_processes, simulation_time = simulation_time, 
                                               cpu_total_time = cpu_total_time, cpu_utilization = cpu_utilization, throughput = throughput, 
                                               average_waiting_time = average_waiting_time, average_turnaround_time = average_turnaround_time, 
-                                              average_response_time = average_response_time)
+                                              average_response_time = average_response_time, timeline_queue = timeline_queue)
     else:
         return "Error: Please upload a file with a '.csv' extension."
 

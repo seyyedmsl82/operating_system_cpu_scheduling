@@ -5,7 +5,7 @@ This algorithm sorts processes by the lowest burst time to the highest; it's pre
 
 """
 
-class PreemptiveSFJ(object):
+class PreemptiveSJF(object):
 
     def __init__(self, processes: list):
 
@@ -122,7 +122,8 @@ class PreemptiveSFJ(object):
                 self.cpu_idle_time += (next_important_time - self.timeline)
             self.timeline = next_important_time
 
-        
+        for i in range(1, len(self.timeline_queue)):
+            self.timeline_queue[i]['start_time'] = max(self.timeline_queue[i]['start_time'], self.timeline_queue[i-1]['end_time'])   
         
         return {
             "timeline_queue": self.timeline_queue,

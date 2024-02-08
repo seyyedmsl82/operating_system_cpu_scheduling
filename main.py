@@ -16,6 +16,7 @@ class Process:
         self.start_time = None
         self.end_time = None
         self.remaining_time = burst_time
+        self.timeline_queue = []
 
     def __str__(self):
         return f"pid: {self.pid} | arrival_time: {self.arrival_time} | priority: {self.priority} |" \
@@ -32,7 +33,7 @@ class Simulator:
 
         self.algorithm = algorithm
         self.algorithm_class = self.get_algorithm_class()
-        self.algorithms_list = ["FCFS", "PreemptiveSFJ", "NonPreemptiveSFJ", "RR", 
+        self.algorithms_list = ["FCFS", "PreemptiveSJF", "NonPreemptiveSJF", "RR", 
                                 "PreemptivePriority", "NonPreemptivePriority"]
         self.processes = []
         self.total_process = 0
@@ -119,11 +120,13 @@ class Simulator:
         average_turnaround_time = result['average_turnaround_time']
         average_response_time = result['average_response_time']
 
+        timeline_queue = result['timeline_queue']
+
         # for process in result['executed_processes']:
         #     print(process)
 
-        for process in result['timeline_queue']:
-            print(process)
+        # for process in result['timeline_queue']:
+        #     print(process)
 
         self.total_process = total_process
         self.cpu_total_time = cpu_total_time
@@ -132,6 +135,7 @@ class Simulator:
         self.average_waiting_time = average_waiting_time
         self.average_turnaround_time = average_turnaround_time
         self.average_response_time = average_response_time
+        self.timeline_queue = timeline_queue
         # update processes
         self.processes = result['executed_processes']
 
@@ -147,22 +151,24 @@ class Simulator:
                 "Throughput": self.throughput,
                 "Average waiting time": self.average_waiting_time,
                 "Average turnaround time": self.average_turnaround_time,
-                "Average response time": self.average_response_time}
+                "Average response time": self.average_response_time,
+                "Timeline Queue": self.timeline_queue}
         )
 
 
 if __name__ == '__main__':
-    # algo = Simulator("FCFS")
-    # algo.read_processes_data()
-    # algo.run()
-    # print(algo.__str__())
-
-    # algo = Simulator("PreemptiveSFJ")
-    # algo.read_processes_data()
-    # algo.run()
-    # print(algo.__str__())
-
-
-    algo = Simulator("NonPreemptiveSFJ")
+    algo = Simulator("FCFS")
     algo.read_processes_data()
     algo.run()
+    # print(algo.__str__())
+
+    algo = Simulator("NonPreemptiveSJF")
+    algo.read_processes_data()
+    algo.run()
+    # print(algo.__str__())
+
+
+    algo = Simulator("PreemptiveSJF")
+    algo.read_processes_data()
+    algo.run()
+    print(algo.__str__())

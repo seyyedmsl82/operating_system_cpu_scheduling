@@ -37,8 +37,6 @@ class FCFS(object):
 
             self.timeline_queue.append({'pid': process.pid, 'start_time': process.start_time, 'end_time': process.end_time})
 
-        # for process in self.timeline_queue:
-        #     print(process)
 
         return {
             "timeline_queue": self.timeline_queue,
